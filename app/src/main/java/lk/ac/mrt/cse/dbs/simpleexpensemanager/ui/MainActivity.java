@@ -30,6 +30,7 @@ import lk.ac.mrt.cse.dbs.simpleexpensemanager.control.ExpenseManager;
 import lk.ac.mrt.cse.dbs.simpleexpensemanager.control.InMemoryDemoExpenseManager;
 
 public class MainActivity extends AppCompatActivity {
+    Database myDB;
     private ExpenseManager expenseManager;
     /**
      * The {@link android.support.v4.view.PagerAdapter} that will provide
@@ -50,7 +51,7 @@ public class MainActivity extends AppCompatActivity {
     protected void onCreate(Bundle savedInstanceState) {
         super.onCreate(savedInstanceState);
         setContentView(R.layout.activity_main);
-
+        myDB = new Database(this);
         Toolbar toolbar = (Toolbar) findViewById(R.id.toolbar);
         setSupportActionBar(toolbar);
         // Create the adapter that will return a fragment for each of the three

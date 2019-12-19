@@ -23,6 +23,7 @@ import android.view.View;
 import android.view.ViewGroup;
 import android.widget.Button;
 import android.widget.EditText;
+import android.widget.Toast;
 
 import lk.ac.mrt.cse.dbs.simpleexpensemanager.R;
 import lk.ac.mrt.cse.dbs.simpleexpensemanager.control.ExpenseManager;
@@ -32,6 +33,7 @@ import static lk.ac.mrt.cse.dbs.simpleexpensemanager.Constants.EXPENSE_MANAGER;
  *
  */
 public class AddAccountFragment extends Fragment implements View.OnClickListener {
+    Database db;
     private ExpenseManager currentExpenseManager;
     private EditText accountNumber;
     private EditText bankName;
@@ -108,5 +110,26 @@ public class AddAccountFragment extends Fragment implements View.OnClickListener
         bankName.getText().clear();
         accountHolderName.getText().clear();
         initialBalance.getText().clear();
+    }
+
+    public void addData(){
+        addAccount.setOnClickListener(
+                new View.OnClickListener(){
+
+                    @Override
+                    public void onClick(View v) {
+                        boolean dataInserted = db.insertDataTable1(accountNumber.getText().toString(),
+                                bankName.getText().toString(),
+                                accountHolderName.getText().toString(),
+                                initialBalance.getText().toString());
+
+                        if (dataInserted == true) {
+                            //Toast.makeText(getApplicationContext(),"data inserted",Toast.LENGTH_SHORT).show();
+                        }else{
+                            //Toast.makeText(getApplicationContext(),"something went wrong",Toast.LENGTH_SHORT).show();
+                        }
+                    }
+                }
+        );
     }
 }

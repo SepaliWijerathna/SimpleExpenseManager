@@ -38,6 +38,7 @@ import static lk.ac.mrt.cse.dbs.simpleexpensemanager.Constants.EXPENSE_MANAGER;
  *
  */
 public class ExpenseLogsFragment extends Fragment {
+    Database db;
     private ExpenseManager currentExpenseManager;
 
     public static ExpenseLogsFragment newInstance(ExpenseManager expenseManager) {
@@ -92,4 +93,11 @@ public class ExpenseLogsFragment extends Fragment {
             logsTableLayout.addView(tr);
         }
     }
+
+    public void onClick(View view){
+        db.getDataTable2();
+    }
+
+
+
 }
